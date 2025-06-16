@@ -42,6 +42,9 @@ export const ContentUpload: React.FC<ContentUploadProps> = ({ data, updateData }
     }
   ];
 
+  const activeOption = uploadOptions.find(opt => opt.id === activeTab);
+  const ActiveIcon = activeOption?.icon;
+
   return (
     <div className="space-y-8">
       <div className="text-center mb-8">
@@ -76,13 +79,11 @@ export const ContentUpload: React.FC<ContentUploadProps> = ({ data, updateData }
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            {uploadOptions.find(opt => opt.id === activeTab)?.icon && (
-              <uploadOptions.find(opt => opt.id === activeTab)!.icon className="w-5 h-5" />
-            )}
-            {uploadOptions.find(opt => opt.id === activeTab)?.title}
+            {ActiveIcon && <ActiveIcon className="w-5 h-5" />}
+            {activeOption?.title}
           </CardTitle>
           <p className="text-gray-600">
-            {uploadOptions.find(opt => opt.id === activeTab)?.description}
+            {activeOption?.description}
           </p>
         </CardHeader>
         
